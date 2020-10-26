@@ -42,7 +42,8 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/kangos/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/kangos/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/kangos/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh
+    vendor/kangos/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/kangos/prebuilt/common/etc/sysconfig/pixel_experience_2020.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2020.xml
 
 # Copy all custom init rc files
 $(foreach f,$(wildcard vendor/kangos/prebuilt/common/etc/init/*.rc),\
@@ -98,6 +99,9 @@ TARGET_FACE_UNLOCK_SUPPORTED := true
 endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.face.moto_unlock_service=$(TARGET_FACE_UNLOCK_SUPPORTED)
+
+# Inherit from sepolicy config
+$(call inherit-product, vendor/kangos/config/sepolicy.mk)
 
 # Fonts
 include vendor/kangos/fonts.mk
