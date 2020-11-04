@@ -15,4 +15,4 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-	vendor/awaken/sepolicy/vendor
+	vendor/kangos/sepolicy/vendor
